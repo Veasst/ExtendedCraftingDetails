@@ -11,7 +11,7 @@ ProfessionsFrame.CraftingPage.SchematicForm.Details.StatLines.DifficultyStatLine
     if maxQuality == 3 then
         multipliers = {0, 0.5, 1};
     elseif maxQuality == 5 then
-        multipliers = {0, 0.4, 0.6, 0.8, 1};
+        multipliers = {0, 0.2, 0.5, 0.8, 1};
     end
     for i=1,#multipliers do
         local rankIcon = CreateAtlasMarkup(Professions.GetIconForQuality(i), 20, 20);
@@ -56,7 +56,7 @@ ProfessionsFrame.CraftingPage.SchematicForm.Details.StatLines.SkillStatLine:SetS
     if maxQuality == 3 then
         multipliers = {0, 0.5, 1};
     elseif maxQuality == 5 then
-        multipliers = {0, 0.4, 0.6, 0.8, 1};
+        multipliers = {0, 0.2, 0.5, 0.8, 1};
     end
 
     GameTooltip_AddBlankLineToTooltip(GameTooltip);
