@@ -45,10 +45,11 @@ ProfessionsFrame.CraftingPage.SchematicForm.Details.StatLines.DifficultyStatLine
     GameTooltip_AddBlankLineToTooltip(GameTooltip);
 
     local baseValue = ProfessionsFrame.CraftingPage.SchematicForm.Details.StatLines.DifficultyStatLine.baseValue;
+    local bonusDifficultyValue = ProfessionsFrame.CraftingPage.SchematicForm.Details.StatLines.DifficultyStatLine.bonusValue;
     local multipliers = getCurrentRecipeDifficultyMultipliers();
     for i=1,#multipliers do
         local rankIcon = CreateAtlasMarkup(Professions.GetIconForQuality(i), 20, 20);
-        local rankDifficulty = baseValue*multipliers[i];
+        local rankDifficulty = baseValue*multipliers[i] + bonusDifficultyValue;
         GameTooltip_AddNormalLine(GameTooltip, rankIcon.." - "..rankDifficulty);
     end
     GameTooltip:Show();
@@ -61,6 +62,7 @@ ProfessionsFrame.CraftingPage.SchematicForm.Details.StatLines.SkillStatLine:SetS
     GameTooltip_AddBlankLineToTooltip(GameTooltip);
 
     local baseDifficultyValue = ProfessionsFrame.CraftingPage.SchematicForm.Details.StatLines.DifficultyStatLine.baseValue;
+    local bonusDifficultyValue = ProfessionsFrame.CraftingPage.SchematicForm.Details.StatLines.DifficultyStatLine.bonusValue;
     local baseSkillValue = ProfessionsFrame.CraftingPage.SchematicForm.Details.StatLines.SkillStatLine.baseValue;
     local bonusSkillValue = ProfessionsFrame.CraftingPage.SchematicForm.Details.StatLines.SkillStatLine.bonusValue;
     local baseSkill = baseSkillValue + bonusSkillValue - getBonusFromCurrentMats();
@@ -72,7 +74,7 @@ ProfessionsFrame.CraftingPage.SchematicForm.Details.StatLines.SkillStatLine:SetS
         local craftQuality = 1;
         local craftSkill = baseSkill + bonusFromMats[i];
         for i=1,#multipliers do
-            local rankDifficulty = baseDifficultyValue*multipliers[i];
+            local rankDifficulty = baseDifficultyValue*multipliers[i] + bonusDifficultyValue;
             if craftSkill >= rankDifficulty then
                 craftQuality = i;
             else
